@@ -44,7 +44,7 @@ cache_filesystem <- function(path, algo = "xxhash64", compress = FALSE) {
   }
 
   cache_get <- function(key) {
-    read.fst(file = file.path(path, key), as.data.table = T)
+    read.fst(path = file.path(path, key), as.data.table = T)
   }
 
   cache_has_key <- function(key) {
