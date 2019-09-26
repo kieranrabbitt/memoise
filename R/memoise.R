@@ -148,15 +148,11 @@ memoise_dt <- memoize_dt <- function(f, ..., envir = environment(f), cache = cac
     } else {
       # modify the call to use the original function and evaluate it
       mc[[1L]] <- encl$`_f`
-      res <- withVisible(eval(mc, parent.frame()))
+      res <- eval(mc, parent.frame())
       encl$`_cache`$set(hash, res)
     }
 
-    if (res$visible) {
-      res$value
-    } else {
-      invisible(res$value)
-    }
+    res
   }
   formals(memo_f) <- f_formals
   attr(memo_f, "memoised") <- TRUE
