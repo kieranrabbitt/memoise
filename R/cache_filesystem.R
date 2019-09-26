@@ -40,11 +40,11 @@ cache_filesystem <- function(path, algo = "xxhash64", compress = FALSE) {
   }
 
   cache_set <- function(key, value) {
-    saveRDS(value, file = file.path(path, key), compress = compress)
+    write.fst(value, path = file.path(path, key), compress = compress)
   }
 
   cache_get <- function(key) {
-    readRDS(file = file.path(path, key))
+    read.fst(file = file.path(path, key), as.data.table = T)
   }
 
   cache_has_key <- function(key) {

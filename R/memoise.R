@@ -114,7 +114,7 @@
 #' memA4 <- memoise(a, ~timeout(10))
 #' memA4(2)
 #' @importFrom stats setNames
-memoise <- memoize <- function(f, ..., envir = environment(f), cache = cache_memory()) {
+memoise_dt <- memoize_dt <- function(f, ..., envir = environment(f), cache = cache_memory()) {
   f_formals <- formals(args(f))
   if(is.memoised(f)) {
     stop("`f` must not be memoised.", call. = FALSE)
